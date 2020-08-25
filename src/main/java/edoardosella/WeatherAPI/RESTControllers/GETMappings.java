@@ -10,16 +10,12 @@ public class GETMappings {
 
     @GetMapping(value="/")
     public String index(){
-        return "hello";
+        return "Welcome to a Weather REST API service. \n" +
+                "The following endpoints are available: \n" +
+                "1) /weather : Returns a JSON response with the weather for a specified route \n" +
+                "Query Params: \n" +
+                "date (i.e. 25/08/2020) + cities (multiple cities separated by '+') \n" +
+                "2) /lastFive : Returns the JSON response for each of the last 5 routes which were queried";
     }
 
-    @GetMapping(value="/test")
-    public ResponseEntity<String> getWeather(){
-        return ResponseEntity.ok("hello");
-    }
-
-    @GetMapping(value="/getweather")
-    public ResponseEntity<String> getWeatherForRoute(@RequestParam(value="date") String date, @RequestParam(value="cities") String cities){
-        return ResponseEntity.ok(date + cities);
-    }
 }
