@@ -1,5 +1,5 @@
 
-package edoardosella.WeatherAPI.POJO;
+package edoardosella.WeatherAPI.HourlyPOJO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,15 +12,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "lat",
-    "lon"
+    "speed",
+    "deg"
 })
-public class Coord {
+public class Wind {
 
-    @JsonProperty("lat")
-    private double lat;
-    @JsonProperty("lon")
-    private double lon;
+    @JsonProperty("speed")
+    private double speed;
+    @JsonProperty("deg")
+    private long deg;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -28,47 +28,47 @@ public class Coord {
      * No args constructor for use in serialization
      * 
      */
-    public Coord() {
+    public Wind() {
     }
 
     /**
      * 
-     * @param lon
-     * @param lat
+     * @param deg
+     * @param speed
      */
-    public Coord(double lat, double lon) {
+    public Wind(double speed, long deg) {
         super();
-        this.lat = lat;
-        this.lon = lon;
+        this.speed = speed;
+        this.deg = deg;
     }
 
-    @JsonProperty("lat")
-    public double getLat() {
-        return lat;
+    @JsonProperty("speed")
+    public double getSpeed() {
+        return speed;
     }
 
-    @JsonProperty("lat")
-    public void setLat(double lat) {
-        this.lat = lat;
+    @JsonProperty("speed")
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
 
-    public Coord withLat(double lat) {
-        this.lat = lat;
+    public Wind withSpeed(double speed) {
+        this.speed = speed;
         return this;
     }
 
-    @JsonProperty("lon")
-    public double getLon() {
-        return lon;
+    @JsonProperty("deg")
+    public long getDeg() {
+        return deg;
     }
 
-    @JsonProperty("lon")
-    public void setLon(double lon) {
-        this.lon = lon;
+    @JsonProperty("deg")
+    public void setDeg(long deg) {
+        this.deg = deg;
     }
 
-    public Coord withLon(double lon) {
-        this.lon = lon;
+    public Wind withDeg(long deg) {
+        this.deg = deg;
         return this;
     }
 
@@ -82,7 +82,7 @@ public class Coord {
         this.additionalProperties.put(name, value);
     }
 
-    public Coord withAdditionalProperty(String name, Object value) {
+    public Wind withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }

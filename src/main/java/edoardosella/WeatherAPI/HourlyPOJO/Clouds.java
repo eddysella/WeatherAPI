@@ -1,5 +1,5 @@
 
-package edoardosella.WeatherAPI.POJO;
+package edoardosella.WeatherAPI.HourlyPOJO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,12 +12,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "pod"
+    "all"
 })
-public class Sys {
+public class Clouds {
 
-    @JsonProperty("pod")
-    private String pod;
+    @JsonProperty("all")
+    private long all;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -25,30 +25,30 @@ public class Sys {
      * No args constructor for use in serialization
      * 
      */
-    public Sys() {
+    public Clouds() {
     }
 
     /**
      * 
-     * @param pod
+     * @param all
      */
-    public Sys(String pod) {
+    public Clouds(long all) {
         super();
-        this.pod = pod;
+        this.all = all;
     }
 
-    @JsonProperty("pod")
-    public String getPod() {
-        return pod;
+    @JsonProperty("all")
+    public long getAll() {
+        return all;
     }
 
-    @JsonProperty("pod")
-    public void setPod(String pod) {
-        this.pod = pod;
+    @JsonProperty("all")
+    public void setAll(long all) {
+        this.all = all;
     }
 
-    public Sys withPod(String pod) {
-        this.pod = pod;
+    public Clouds withAll(long all) {
+        this.all = all;
         return this;
     }
 
@@ -62,7 +62,7 @@ public class Sys {
         this.additionalProperties.put(name, value);
     }
 
-    public Sys withAdditionalProperty(String name, Object value) {
+    public Clouds withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }

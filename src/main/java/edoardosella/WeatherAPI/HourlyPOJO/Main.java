@@ -1,5 +1,5 @@
 
-package edoardosella.WeatherAPI.POJO;
+package edoardosella.WeatherAPI.HourlyPOJO;
 
 import java.util.HashMap;
 import java.util.Map;

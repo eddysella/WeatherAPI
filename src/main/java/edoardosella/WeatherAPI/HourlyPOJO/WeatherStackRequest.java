@@ -1,5 +1,5 @@
 
-package edoardosella.WeatherAPI.POJO;
+package edoardosella.WeatherAPI.HourlyPOJO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class WeatherStackRequest {
     @JsonProperty("cnt")
     private long cnt;
     @JsonProperty("list")
-    private java.util.List<edoardosella.WeatherAPI.POJO.List> list = new ArrayList<>();
+    private java.util.List<edoardosella.WeatherAPI.HourlyPOJO.List> list = new ArrayList<>();
     @JsonProperty("city")
     private City city;
     @JsonIgnore
@@ -49,7 +49,7 @@ public class WeatherStackRequest {
      * @param message
      * @param list
      */
-    public WeatherStackRequest(String cod, double message, long cnt, java.util.List<edoardosella.WeatherAPI.POJO.List> list, City city) {
+    public WeatherStackRequest(String cod, double message, long cnt, java.util.List<edoardosella.WeatherAPI.HourlyPOJO.List> list, City city) {
         super();
         this.cod = cod;
         this.message = message;
@@ -104,16 +104,16 @@ public class WeatherStackRequest {
     }
 
     @JsonProperty("list")
-    public java.util.List<edoardosella.WeatherAPI.POJO.List> getList() {
+    public java.util.List<edoardosella.WeatherAPI.HourlyPOJO.List> getList() {
         return list;
     }
 
     @JsonProperty("list")
-    public void setList(java.util.List<edoardosella.WeatherAPI.POJO.List> list) {
+    public void setList(java.util.List<edoardosella.WeatherAPI.HourlyPOJO.List> list) {
         this.list = list;
     }
 
-    public WeatherStackRequest withList(java.util.List<edoardosella.WeatherAPI.POJO.List> list) {
+    public WeatherStackRequest withList(java.util.List<edoardosella.WeatherAPI.HourlyPOJO.List> list) {
         this.list = list;
         return this;
     }

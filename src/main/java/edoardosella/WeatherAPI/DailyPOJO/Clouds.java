@@ -1,6 +1,7 @@
 
-package edoardosella.WeatherAPI.POJO;
+package edoardosella.WeatherAPI;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -12,63 +13,45 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "speed",
-    "deg"
+    "all"
 })
-public class Wind {
+public class Clouds implements Serializable
+{
 
-    @JsonProperty("speed")
-    private double speed;
-    @JsonProperty("deg")
-    private long deg;
+    @JsonProperty("all")
+    private long all;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final static long serialVersionUID = 8362637302134964408L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Wind() {
+    public Clouds() {
     }
 
     /**
      * 
-     * @param deg
-     * @param speed
+     * @param all
      */
-    public Wind(double speed, long deg) {
+    public Clouds(long all) {
         super();
-        this.speed = speed;
-        this.deg = deg;
+        this.all = all;
     }
 
-    @JsonProperty("speed")
-    public double getSpeed() {
-        return speed;
+    @JsonProperty("all")
+    public long getAll() {
+        return all;
     }
 
-    @JsonProperty("speed")
-    public void setSpeed(double speed) {
-        this.speed = speed;
+    @JsonProperty("all")
+    public void setAll(long all) {
+        this.all = all;
     }
 
-    public Wind withSpeed(double speed) {
-        this.speed = speed;
-        return this;
-    }
-
-    @JsonProperty("deg")
-    public long getDeg() {
-        return deg;
-    }
-
-    @JsonProperty("deg")
-    public void setDeg(long deg) {
-        this.deg = deg;
-    }
-
-    public Wind withDeg(long deg) {
-        this.deg = deg;
+    public Clouds withAll(long all) {
+        this.all = all;
         return this;
     }
 
@@ -82,7 +65,7 @@ public class Wind {
         this.additionalProperties.put(name, value);
     }
 
-    public Wind withAdditionalProperty(String name, Object value) {
+    public Clouds withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
