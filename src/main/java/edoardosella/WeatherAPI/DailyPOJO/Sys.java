@@ -1,5 +1,5 @@
 
-package edoardosella.WeatherAPI;
+package edoardosella.WeatherAPI.DailyPOJO;
 
 import java.io.Serializable;
 import java.util.HashMap;
