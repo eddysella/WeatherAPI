@@ -1,18 +1,17 @@
-package edoardosella.WeatherAPI.HTTPResources;
+package edoardosella.WeatherAPI.HTTPResources.Processors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edoardosella.WeatherAPI.POJO.WeatherStackRequest;
 
 //https://mkyong.com/java/jackson-2-convert-java-object-to-from-json/
-public class JSONManipulator {
+public class JSONProcessor {
 
     private ObjectMapper objectMapper;
 
-    public JSONManipulator(){
+    public JSONProcessor(){
         this.objectMapper = new ObjectMapper();
     }
 
-    public String javaToJSON(Object object){
+    public String objectToJSON(Object object){
         try {
             return objectMapper.writeValueAsString(object);
 
@@ -21,9 +20,9 @@ public class JSONManipulator {
         }
     }
 
-    public WeatherStackRequest JSONToWeatherStackRequest(String JSON){
+    public Object jsonToObject(String JSON, Class objClass){
         try {
-            return objectMapper.readValue(JSON, WeatherStackRequest.class);
+            return objectMapper.readValue(JSON, objClass);
 
         }catch(Exception e){
             return null;
