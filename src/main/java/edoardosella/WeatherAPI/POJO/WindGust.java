@@ -1,6 +1,7 @@
 
-package edoardosella.WeatherAPI.HourlyPOJO;
+package edoardosella.WeatherAPI.POJO;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -12,63 +13,65 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "speed",
-    "deg"
+    "Speed",
+    "Direction"
 })
-public class Wind {
+public class WindGust implements Serializable
+{
 
-    @JsonProperty("speed")
-    private double speed;
-    @JsonProperty("deg")
-    private long deg;
+    @JsonProperty("Speed")
+    private Speed_ speed;
+    @JsonProperty("Direction")
+    private Direction_ direction;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final static long serialVersionUID = -1292531963106098496L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Wind() {
+    public WindGust() {
     }
 
     /**
      * 
-     * @param deg
      * @param speed
+     * @param direction
      */
-    public Wind(double speed, long deg) {
+    public WindGust(Speed_ speed, Direction_ direction) {
         super();
         this.speed = speed;
-        this.deg = deg;
+        this.direction = direction;
     }
 
-    @JsonProperty("speed")
-    public double getSpeed() {
+    @JsonProperty("Speed")
+    public Speed_ getSpeed() {
         return speed;
     }
 
-    @JsonProperty("speed")
-    public void setSpeed(double speed) {
+    @JsonProperty("Speed")
+    public void setSpeed(Speed_ speed) {
         this.speed = speed;
     }
 
-    public Wind withSpeed(double speed) {
+    public WindGust withSpeed(Speed_ speed) {
         this.speed = speed;
         return this;
     }
 
-    @JsonProperty("deg")
-    public long getDeg() {
-        return deg;
+    @JsonProperty("Direction")
+    public Direction_ getDirection() {
+        return direction;
     }
 
-    @JsonProperty("deg")
-    public void setDeg(long deg) {
-        this.deg = deg;
+    @JsonProperty("Direction")
+    public void setDirection(Direction_ direction) {
+        this.direction = direction;
     }
 
-    public Wind withDeg(long deg) {
-        this.deg = deg;
+    public WindGust withDirection(Direction_ direction) {
+        this.direction = direction;
         return this;
     }
 
@@ -82,7 +85,7 @@ public class Wind {
         this.additionalProperties.put(name, value);
     }
 
-    public Wind withAdditionalProperty(String name, Object value) {
+    public WindGust withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }

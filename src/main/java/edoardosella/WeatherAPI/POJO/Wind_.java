@@ -1,5 +1,5 @@
 
-package edoardosella.WeatherAPI.DailyPOJO;
+package edoardosella.WeatherAPI.POJO;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -13,65 +13,65 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "lon",
-    "lat"
+    "Speed",
+    "Direction"
 })
-public class Coord implements Serializable
+public class Wind_ implements Serializable
 {
 
-    @JsonProperty("lon")
-    private long lon;
-    @JsonProperty("lat")
-    private long lat;
+    @JsonProperty("Speed")
+    private Speed__ speed;
+    @JsonProperty("Direction")
+    private Direction__ direction;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 188211043838469241L;
+    private final static long serialVersionUID = 8729486840724470260L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Coord() {
+    public Wind_() {
     }
 
     /**
      * 
-     * @param lon
-     * @param lat
+     * @param speed
+     * @param direction
      */
-    public Coord(long lon, long lat) {
+    public Wind_(Speed__ speed, Direction__ direction) {
         super();
-        this.lon = lon;
-        this.lat = lat;
+        this.speed = speed;
+        this.direction = direction;
     }
 
-    @JsonProperty("lon")
-    public long getLon() {
-        return lon;
+    @JsonProperty("Speed")
+    public Speed__ getSpeed() {
+        return speed;
     }
 
-    @JsonProperty("lon")
-    public void setLon(long lon) {
-        this.lon = lon;
+    @JsonProperty("Speed")
+    public void setSpeed(Speed__ speed) {
+        this.speed = speed;
     }
 
-    public Coord withLon(long lon) {
-        this.lon = lon;
+    public Wind_ withSpeed(Speed__ speed) {
+        this.speed = speed;
         return this;
     }
 
-    @JsonProperty("lat")
-    public long getLat() {
-        return lat;
+    @JsonProperty("Direction")
+    public Direction__ getDirection() {
+        return direction;
     }
 
-    @JsonProperty("lat")
-    public void setLat(long lat) {
-        this.lat = lat;
+    @JsonProperty("Direction")
+    public void setDirection(Direction__ direction) {
+        this.direction = direction;
     }
 
-    public Coord withLat(long lat) {
-        this.lat = lat;
+    public Wind_ withDirection(Direction__ direction) {
+        this.direction = direction;
         return this;
     }
 
@@ -85,7 +85,7 @@ public class Coord implements Serializable
         this.additionalProperties.put(name, value);
     }
 
-    public Coord withAdditionalProperty(String name, Object value) {
+    public Wind_ withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
