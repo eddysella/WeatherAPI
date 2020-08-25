@@ -25,7 +25,7 @@ public class Wind implements Serializable
     private double deg;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 4951354813107236774L;
+    private final static long serialVersionUID = 8491258634859983783L;
 
     /**
      * No args constructor for use in serialization

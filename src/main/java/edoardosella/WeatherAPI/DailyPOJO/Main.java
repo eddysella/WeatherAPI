@@ -37,7 +37,7 @@ public class Main implements Serializable
     private long humidity;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 3076579943600182309L;
+    private final static long serialVersionUID = -5812330559271562371L;
 
     /**
      * No args constructor for use in serialization

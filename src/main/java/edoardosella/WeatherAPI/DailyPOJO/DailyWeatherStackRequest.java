@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "name",
     "cod"
 })
-public class WeatherStackRequest implements Serializable
+public class DailyWeatherStackRequest implements Serializable
 {
 
     @JsonProperty("coord")
@@ -57,13 +57,13 @@ public class WeatherStackRequest implements Serializable
     private long cod;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -6564216358832926233L;
+    private final static long serialVersionUID = -7816617409254637575L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public WeatherStackRequest() {
+    public DailyWeatherStackRequest() {
     }
 
     /**
@@ -81,7 +81,7 @@ public class WeatherStackRequest implements Serializable
      * @param base
      * @param wind
      */
-    public WeatherStackRequest(Coord coord, List<Weather> weather, String base, Main main, Wind wind, Clouds clouds, long dt, Sys sys, long timezone, long id, String name, long cod) {
+    public DailyWeatherStackRequest(Coord coord, List<Weather> weather, String base, Main main, Wind wind, Clouds clouds, long dt, Sys sys, long timezone, long id, String name, long cod) {
         super();
         this.coord = coord;
         this.weather = weather;
@@ -107,7 +107,7 @@ public class WeatherStackRequest implements Serializable
         this.coord = coord;
     }
 
-    public WeatherStackRequest withCoord(Coord coord) {
+    public DailyWeatherStackRequest withCoord(Coord coord) {
         this.coord = coord;
         return this;
     }
@@ -122,7 +122,7 @@ public class WeatherStackRequest implements Serializable
         this.weather = weather;
     }
 
-    public WeatherStackRequest withWeather(List<Weather> weather) {
+    public DailyWeatherStackRequest withWeather(List<Weather> weather) {
         this.weather = weather;
         return this;
     }
@@ -137,7 +137,7 @@ public class WeatherStackRequest implements Serializable
         this.base = base;
     }
 
-    public WeatherStackRequest withBase(String base) {
+    public DailyWeatherStackRequest withBase(String base) {
         this.base = base;
         return this;
     }
@@ -152,7 +152,7 @@ public class WeatherStackRequest implements Serializable
         this.main = main;
     }
 
-    public WeatherStackRequest withMain(Main main) {
+    public DailyWeatherStackRequest withMain(Main main) {
         this.main = main;
         return this;
     }
@@ -167,7 +167,7 @@ public class WeatherStackRequest implements Serializable
         this.wind = wind;
     }
 
-    public WeatherStackRequest withWind(Wind wind) {
+    public DailyWeatherStackRequest withWind(Wind wind) {
         this.wind = wind;
         return this;
     }
@@ -182,7 +182,7 @@ public class WeatherStackRequest implements Serializable
         this.clouds = clouds;
     }
 
-    public WeatherStackRequest withClouds(Clouds clouds) {
+    public DailyWeatherStackRequest withClouds(Clouds clouds) {
         this.clouds = clouds;
         return this;
     }
@@ -197,7 +197,7 @@ public class WeatherStackRequest implements Serializable
         this.dt = dt;
     }
 
-    public WeatherStackRequest withDt(long dt) {
+    public DailyWeatherStackRequest withDt(long dt) {
         this.dt = dt;
         return this;
     }
@@ -212,7 +212,7 @@ public class WeatherStackRequest implements Serializable
         this.sys = sys;
     }
 
-    public WeatherStackRequest withSys(Sys sys) {
+    public DailyWeatherStackRequest withSys(Sys sys) {
         this.sys = sys;
         return this;
     }
@@ -227,7 +227,7 @@ public class WeatherStackRequest implements Serializable
         this.timezone = timezone;
     }
 
-    public WeatherStackRequest withTimezone(long timezone) {
+    public DailyWeatherStackRequest withTimezone(long timezone) {
         this.timezone = timezone;
         return this;
     }
@@ -242,7 +242,7 @@ public class WeatherStackRequest implements Serializable
         this.id = id;
     }
 
-    public WeatherStackRequest withId(long id) {
+    public DailyWeatherStackRequest withId(long id) {
         this.id = id;
         return this;
     }
@@ -257,7 +257,7 @@ public class WeatherStackRequest implements Serializable
         this.name = name;
     }
 
-    public WeatherStackRequest withName(String name) {
+    public DailyWeatherStackRequest withName(String name) {
         this.name = name;
         return this;
     }
@@ -272,7 +272,7 @@ public class WeatherStackRequest implements Serializable
         this.cod = cod;
     }
 
-    public WeatherStackRequest withCod(long cod) {
+    public DailyWeatherStackRequest withCod(long cod) {
         this.cod = cod;
         return this;
     }
@@ -287,7 +287,7 @@ public class WeatherStackRequest implements Serializable
         this.additionalProperties.put(name, value);
     }
 
-    public WeatherStackRequest withAdditionalProperty(String name, Object value) {
+    public DailyWeatherStackRequest withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }

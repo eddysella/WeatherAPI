@@ -22,7 +22,7 @@ public class Clouds implements Serializable
     private long all;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 8362637302134964408L;
+    private final static long serialVersionUID = 6724191232782625039L;
 
     /**
      * No args constructor for use in serialization

@@ -31,7 +31,7 @@ public class Weather implements Serializable
     private String icon;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 590513415754475392L;
+    private final static long serialVersionUID = 5484635630982184986L;
 
     /**
      * No args constructor for use in serialization

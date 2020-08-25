@@ -25,7 +25,7 @@ public class Coord implements Serializable
     private long lat;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -7469542953742887733L;
+    private final static long serialVersionUID = 188211043838469241L;
 
     /**
      * No args constructor for use in serialization

@@ -37,7 +37,7 @@ public class Sys implements Serializable
     private long sunset;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 2502118898957983179L;
+    private final static long serialVersionUID = 3462714839285816105L;
 
     /**
      * No args constructor for use in serialization
