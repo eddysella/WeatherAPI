@@ -7,21 +7,10 @@ import okhttp3.Response;
 
 public class HTTPClient {
 
-    private APIKey defaultKey;
-
-    public HTTPClient(){
-        defaultKey = new APIKey();
-    }
+    public HTTPClient(){}
 
     public synchronized String getFiveDayForecast(String cityID, String passedKey){
         OkHttpClient httpClient = new OkHttpClient();
-        String apiKey;
-
-        if(passedKey != "null"){
-            apiKey = passedKey;
-        }else{
-            apiKey = this.defaultKey.getKey();
-        }
 
         try {
 
@@ -33,7 +22,7 @@ public class HTTPClient {
                     .addPathSegment("daily")
                     .addPathSegment("5day")
                     .addPathSegment(cityID)
-                    .addQueryParameter("apikey", apiKey)
+                    .addQueryParameter("apikey", passedKey)
                     .addQueryParameter("language", "en-us")
                     .addQueryParameter("details", "false")
                     .addQueryParameter("metric", "true")
