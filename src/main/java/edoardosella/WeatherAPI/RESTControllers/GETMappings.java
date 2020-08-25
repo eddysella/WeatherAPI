@@ -18,4 +18,13 @@ public class GETMappings {
                 "2) /lastFive : Returns the JSON response for each of the last 5 routes which were queried";
     }
 
+    @GetMapping(value="/weather")
+    public ResponseEntity<String> getWeatherForRoute(@RequestParam(value="date") String date, @RequestParam(value="cities") String cities){
+        return ResponseEntity.ok("");
+    }
+
+    @GetMapping(value="/lastFive")
+    public ResponseEntity<String> getLastFiveQueries(@RequestParam(value="date") String date, @RequestParam(value="cities") String cities){
+        return ResponseEntity.ok("");
+    }
 }
