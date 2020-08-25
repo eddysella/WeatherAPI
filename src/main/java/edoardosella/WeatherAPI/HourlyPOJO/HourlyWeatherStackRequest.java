@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "list",
     "city"
 })
-public class WeatherStackRequest {
+public class HourlyWeatherStackRequest {
 
     @JsonProperty("cod")
     private String cod;
@@ -38,7 +38,7 @@ public class WeatherStackRequest {
      * No args constructor for use in serialization
      * 
      */
-    public WeatherStackRequest() {
+    public HourlyWeatherStackRequest() {
     }
 
     /**
@@ -49,7 +49,7 @@ public class WeatherStackRequest {
      * @param message
      * @param list
      */
-    public WeatherStackRequest(String cod, double message, long cnt, java.util.List<edoardosella.WeatherAPI.HourlyPOJO.List> list, City city) {
+    public HourlyWeatherStackRequest(String cod, double message, long cnt, java.util.List<edoardosella.WeatherAPI.HourlyPOJO.List> list, City city) {
         super();
         this.cod = cod;
         this.message = message;
@@ -68,7 +68,7 @@ public class WeatherStackRequest {
         this.cod = cod;
     }
 
-    public WeatherStackRequest withCod(String cod) {
+    public HourlyWeatherStackRequest withCod(String cod) {
         this.cod = cod;
         return this;
     }
@@ -83,7 +83,7 @@ public class WeatherStackRequest {
         this.message = message;
     }
 
-    public WeatherStackRequest withMessage(double message) {
+    public HourlyWeatherStackRequest withMessage(double message) {
         this.message = message;
         return this;
     }
@@ -98,7 +98,7 @@ public class WeatherStackRequest {
         this.cnt = cnt;
     }
 
-    public WeatherStackRequest withCnt(long cnt) {
+    public HourlyWeatherStackRequest withCnt(long cnt) {
         this.cnt = cnt;
         return this;
     }
@@ -113,7 +113,7 @@ public class WeatherStackRequest {
         this.list = list;
     }
 
-    public WeatherStackRequest withList(java.util.List<edoardosella.WeatherAPI.HourlyPOJO.List> list) {
+    public HourlyWeatherStackRequest withList(java.util.List<edoardosella.WeatherAPI.HourlyPOJO.List> list) {
         this.list = list;
         return this;
     }
@@ -128,7 +128,7 @@ public class WeatherStackRequest {
         this.city = city;
     }
 
-    public WeatherStackRequest withCity(City city) {
+    public HourlyWeatherStackRequest withCity(City city) {
         this.city = city;
         return this;
     }
@@ -143,7 +143,7 @@ public class WeatherStackRequest {
         this.additionalProperties.put(name, value);
     }
 
-    public WeatherStackRequest withAdditionalProperty(String name, Object value) {
+    public HourlyWeatherStackRequest withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
