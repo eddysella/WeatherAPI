@@ -28,7 +28,7 @@ public class WeatherRoute {
     }
 
     @GetMapping(value="/weatherRoute")
-    public ResponseEntity<String> getWeatherRoute(@RequestParam(value="date") String dateParam, @RequestParam(value="cities") String citiesParam){
+    public ResponseEntity<String> getWeatherRoute(@RequestParam(value="date") String dateParam, @RequestParam(value="cities") String citiesParam, @RequestParam(value="apikey", defaultValue = "null") String apiKey){
 
         int dateDifference = calculateDateDifference(dateParam);
 
@@ -43,7 +43,7 @@ public class WeatherRoute {
         WeatherStack weatherStack = new WeatherStack();
 
         for(String city : cities){
-            String weatherJSON = this.weather.getFiveDayForecast(city);
+            String weatherJSON = this.weather.getFiveDayForecast(city, apiKey);
             weatherStack = (WeatherStack) this.jsonProcessor.jsonToObject(weatherJSON, WeatherStack.class);
             responsePOJOs.put(city, weatherStack);
         }
