@@ -1,4 +1,3 @@
-
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.WeatherStack;
 
 import com.fasterxml.jackson.annotation.*;
@@ -9,14 +8,13 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "Name",
-    "Value",
-    "Category",
-    "CategoryValue",
-    "Type"
+        "Name",
+        "Value",
+        "Category",
+        "CategoryValue",
+        "Type"
 })
-public class AirAndPollen implements Serializable
-{
+public class AirAndPollen implements Serializable {
 
     @JsonProperty("Name")
     private String name;
@@ -34,13 +32,11 @@ public class AirAndPollen implements Serializable
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public AirAndPollen() {
     }
 
     /**
-     * 
      * @param name
      * @param categoryValue
      * @param category

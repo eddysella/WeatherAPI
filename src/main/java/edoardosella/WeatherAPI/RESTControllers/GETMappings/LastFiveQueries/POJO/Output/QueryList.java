@@ -7,13 +7,15 @@ public class QueryList {
 
     List<String> routeList;
 
-    public QueryList(){ this.routeList = new ArrayList<>(); }
+    public QueryList() {
+        this.routeList = new ArrayList<>();
+    }
 
-    public QueryList(List<String> routeList){
+    public QueryList(List<String> routeList) {
         this.routeList = routeList;
     }
 
-    public void addRoute(String route){
+    public void addRoute(String route) {
         this.routeList.add(route);
     }
 

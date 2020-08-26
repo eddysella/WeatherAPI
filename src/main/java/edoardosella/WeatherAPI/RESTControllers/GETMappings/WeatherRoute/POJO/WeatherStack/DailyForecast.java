@@ -1,4 +1,3 @@
-
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.WeatherStack;
 
 import com.fasterxml.jackson.annotation.*;
@@ -11,24 +10,23 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "Date",
-    "EpochDate",
-    "Sun",
-    "Moon",
-    "Temperature",
-    "RealFeelTemperature",
-    "RealFeelTemperatureShade",
-    "HoursOfSun",
-    "DegreeDaySummary",
-    "AirAndPollen",
-    "Day",
-    "Night",
-    "Sources",
-    "MobileLink",
-    "Link"
+        "Date",
+        "EpochDate",
+        "Sun",
+        "Moon",
+        "Temperature",
+        "RealFeelTemperature",
+        "RealFeelTemperatureShade",
+        "HoursOfSun",
+        "DegreeDaySummary",
+        "AirAndPollen",
+        "Day",
+        "Night",
+        "Sources",
+        "MobileLink",
+        "Link"
 })
-public class DailyForecast implements Serializable
-{
+public class DailyForecast implements Serializable {
 
     @JsonProperty("Date")
     private String date;
@@ -66,13 +64,11 @@ public class DailyForecast implements Serializable
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public DailyForecast() {
     }
 
     /**
-     * 
      * @param date
      * @param airAndPollen
      * @param sources

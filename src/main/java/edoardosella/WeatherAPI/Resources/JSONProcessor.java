@@ -7,24 +7,22 @@ public class JSONProcessor {
 
     private ObjectMapper objectMapper;
 
-    public JSONProcessor(){
+    public JSONProcessor() {
         this.objectMapper = new ObjectMapper();
     }
 
-    public String objectToJSONString(Object object){
+    public String objectToJSONString(Object object) {
         try {
             return objectMapper.writeValueAsString(object);
-
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
 
-    public Object jsonToObject(String JSON, Class objClass){
+    public Object jsonToObject(String JSON, Class objClass) {
         try {
             return objectMapper.readValue(JSON, objClass);
-
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }

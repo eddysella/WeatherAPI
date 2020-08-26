@@ -1,7 +1,5 @@
 package edoardosella.WeatherAPI.JPA.Models;
 
-import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Output.Route;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -17,7 +15,7 @@ public class PreviousRoute implements Serializable {
     @Column(name = "route")
     private String route;
 
-    public PreviousRoute(){}
+    public PreviousRoute() {}
 
     public PreviousRoute(String route) {
         this.route = route;

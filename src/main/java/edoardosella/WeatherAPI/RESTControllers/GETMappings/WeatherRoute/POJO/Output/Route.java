@@ -7,15 +7,15 @@ public class Route {
 
     private List<City> route;
 
-    public Route(){
+    public Route() {
         this.route = new ArrayList<>();
     }
 
-    public Route(ArrayList<City> route){
+    public Route(ArrayList<City> route) {
         this.route = route;
     }
 
-    public void addCity(City city){
+    public void addCity(City city) {
         route.add(city);
     }
 
@@ -28,13 +28,11 @@ public class Route {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         String output = "";
-
-        for(City city : this.route){
+        for (City city : this.route) {
             output += city.toString();
         }
-
         return output;
     }
 }

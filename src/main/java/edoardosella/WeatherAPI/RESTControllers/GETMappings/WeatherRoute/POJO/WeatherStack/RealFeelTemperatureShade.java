@@ -1,4 +1,3 @@
-
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.WeatherStack;
 
 import com.fasterxml.jackson.annotation.*;
@@ -9,11 +8,10 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "Minimum",
-    "Maximum"
+        "Minimum",
+        "Maximum"
 })
-public class RealFeelTemperatureShade implements Serializable
-{
+public class RealFeelTemperatureShade implements Serializable {
 
     @JsonProperty("Minimum")
     private Minimum__ minimum;
@@ -25,13 +23,11 @@ public class RealFeelTemperatureShade implements Serializable
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public RealFeelTemperatureShade() {
     }
 
     /**
-     * 
      * @param maximum
      * @param minimum
      */

@@ -10,7 +10,8 @@ public class City implements Serializable {
     private double averageTemp;
     private String weatherDescription;
 
-    public City(){}
+    public City() {
+    }
 
     public City(String cityID, double minTemp, double maxTemp, double averageTemp, String description) {
         this.cityID = cityID;

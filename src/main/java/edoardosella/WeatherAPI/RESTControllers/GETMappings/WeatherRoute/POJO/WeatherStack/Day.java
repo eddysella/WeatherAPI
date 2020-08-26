@@ -1,4 +1,3 @@
-
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.WeatherStack;
 
 import com.fasterxml.jackson.annotation.*;
@@ -9,32 +8,31 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "Icon",
-    "IconPhrase",
-    "HasPrecipitation",
-    "PrecipitationType",
-    "PrecipitationIntensity",
-    "ShortPhrase",
-    "LongPhrase",
-    "PrecipitationProbability",
-    "ThunderstormProbability",
-    "RainProbability",
-    "SnowProbability",
-    "IceProbability",
-    "Wind",
-    "WindGust",
-    "TotalLiquid",
-    "Rain",
-    "Snow",
-    "Ice",
-    "HoursOfPrecipitation",
-    "HoursOfRain",
-    "HoursOfSnow",
-    "HoursOfIce",
-    "CloudCover"
+        "Icon",
+        "IconPhrase",
+        "HasPrecipitation",
+        "PrecipitationType",
+        "PrecipitationIntensity",
+        "ShortPhrase",
+        "LongPhrase",
+        "PrecipitationProbability",
+        "ThunderstormProbability",
+        "RainProbability",
+        "SnowProbability",
+        "IceProbability",
+        "Wind",
+        "WindGust",
+        "TotalLiquid",
+        "Rain",
+        "Snow",
+        "Ice",
+        "HoursOfPrecipitation",
+        "HoursOfRain",
+        "HoursOfSnow",
+        "HoursOfIce",
+        "CloudCover"
 })
-public class Day implements Serializable
-{
+public class Day implements Serializable {
 
     @JsonProperty("Icon")
     private long icon;
@@ -88,13 +86,11 @@ public class Day implements Serializable
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public Day() {
     }
 
     /**
-     * 
      * @param hoursOfPrecipitation
      * @param precipitationProbability
      * @param rain

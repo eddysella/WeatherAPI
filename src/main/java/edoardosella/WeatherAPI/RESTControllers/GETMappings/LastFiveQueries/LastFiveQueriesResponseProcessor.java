@@ -1,9 +1,9 @@
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.LastFiveQueries;
 
-import edoardosella.WeatherAPI.Resources.JSONProcessor;
 import edoardosella.WeatherAPI.JPA.Models.PreviousRoute;
 import edoardosella.WeatherAPI.JPA.Repositories.PreviousRouteRepo;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.LastFiveQueries.POJO.Output.QueryList;
+import edoardosella.WeatherAPI.Resources.JSONProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,24 +16,22 @@ public class LastFiveQueriesResponseProcessor {
     PreviousRouteRepo previousRouteRepo;
     JSONProcessor jsonProcessor;
 
-    public LastFiveQueriesResponseProcessor(){
+    public LastFiveQueriesResponseProcessor() {
         jsonProcessor = new JSONProcessor();
     }
 
-    public String getLastFiveQueries(){
-
-        String output = "";
+    public String getLastFiveQueries() {
+        String output;
         QueryList queryList = new QueryList();
 
-        if(previousRouteRepo.count() > 0){
+        if (previousRouteRepo.count() > 0) {
             List<PreviousRoute> lastFiveQueries = previousRouteRepo.findTop5ByOrderByIdDesc();
-
-            for(PreviousRoute route : lastFiveQueries) {
+            for (PreviousRoute route : lastFiveQueries) {
                 queryList.addRoute(route.getRoute());
             }
-
             output = jsonProcessor.objectToJSONString(queryList);
-        }else{
+
+        } else {
             output = "No Queries in Database";
         }
 

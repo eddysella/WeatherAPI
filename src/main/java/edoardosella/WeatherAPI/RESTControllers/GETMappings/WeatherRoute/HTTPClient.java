@@ -7,9 +7,10 @@ import okhttp3.Response;
 
 public class HTTPClient {
 
-    public HTTPClient(){}
+    public HTTPClient() {
+    }
 
-    public synchronized String getFiveDayForecast(String cityID, String passedKey){
+    public synchronized String getFiveDayForecast(String cityID, String passedKey) {
         OkHttpClient httpClient = new OkHttpClient();
 
         try {
@@ -33,9 +34,9 @@ public class HTTPClient {
                     .build();
 
             try (Response response = httpClient.newCall(request).execute()) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     return response.body().string();
-                }else{
+                } else {
                     return "Unexpected code " + response + request;
                 }
             }

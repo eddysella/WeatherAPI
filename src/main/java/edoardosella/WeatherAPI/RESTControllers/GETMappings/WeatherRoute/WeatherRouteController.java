@@ -18,26 +18,22 @@ public class WeatherRouteController {
 
     WeatherRouteController(){}
 
-    @GetMapping(value="/weatherRoute")
-    public ResponseEntity<String> getWeatherRoute(@RequestParam(value="date") String dateParam, @RequestParam(value="cities") String citiesParam, @RequestParam(value="apikey", defaultValue = "null") String apiKey){
-
+    @GetMapping(value = "/weatherRoute")
+    public ResponseEntity<String> getWeatherRoute(@RequestParam(value = "date") String dateParam, @RequestParam(value = "cities") String citiesParam, @RequestParam(value = "apikey", defaultValue = "null") String apiKey) {
+        String output;
         int dateDifference = calculateDateDifference(dateParam);
-
-        if(dateDifference < 0 || dateDifference > 4){
+        if (dateDifference < 0 || dateDifference > 4) {
             return ResponseEntity.badRequest().build();
         }
-
-        String output = this.responseProcessor.processRequest(citiesParam, apiKey, dateDifference);
-
+        output = this.responseProcessor.processRequest(citiesParam, apiKey, dateDifference);
         return ResponseEntity.ok(output);
     }
 
     //https://stackoverflow.com/questions/3299972/difference-in-days-between-two-dates-in-java
-    private int calculateDateDifference(String past){
+    private int calculateDateDifference(String past) {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
         DateTime pastDate = DateTime.parse(past, formatter).withTimeAtStartOfDay();
         DateTime today = new DateTime().withTimeAtStartOfDay();
-
         return Days.daysBetween(today, pastDate).getDays();
     }
 }

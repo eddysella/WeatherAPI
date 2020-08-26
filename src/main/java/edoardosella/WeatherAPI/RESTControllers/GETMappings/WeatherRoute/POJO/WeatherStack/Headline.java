@@ -1,4 +1,3 @@
-
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.WeatherStack;
 
 import com.fasterxml.jackson.annotation.*;
@@ -9,18 +8,17 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "EffectiveDate",
-    "EffectiveEpochDate",
-    "Severity",
-    "Text",
-    "Category",
-    "EndDate",
-    "EndEpochDate",
-    "MobileLink",
-    "Link"
+        "EffectiveDate",
+        "EffectiveEpochDate",
+        "Severity",
+        "Text",
+        "Category",
+        "EndDate",
+        "EndEpochDate",
+        "MobileLink",
+        "Link"
 })
-public class Headline implements Serializable
-{
+public class Headline implements Serializable {
 
     @JsonProperty("EffectiveDate")
     private String effectiveDate;
@@ -46,13 +44,11 @@ public class Headline implements Serializable
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public Headline() {
     }
 
     /**
-     * 
      * @param severity
      * @param endEpochDate
      * @param effectiveEpochDate
