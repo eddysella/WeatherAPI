@@ -10,7 +10,9 @@ import edoardosella.WeatherAPI.Resources.JSONProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.MalformedURLException;
 import java.util.*;
+import java.util.regex.PatternSyntaxException;
 
 @Service
 public class WeatherRouteResponseProcessor {
@@ -25,14 +27,16 @@ public class WeatherRouteResponseProcessor {
         this.jsonProcessor = new JSONProcessor();
     }
 
-    public String processRequest(String citiesParam, String apiKey, int dateDifference) {
+    public String processRequest(String citiesParam, String apiKey, int dateDifference) throws MalformedURLException, PatternSyntaxException{
         String output;
         double average;
         DailyForecast forecast;
         City cityPOJO;
+        List<String> cities;
         Route route = new Route();
-        List<String> cities = new ArrayList<String>(Arrays.asList(citiesParam.split("&")));
+        cities = new ArrayList<String>(Arrays.asList(citiesParam.split("&")));
         Map<String, WeatherStack> responsePOJOs = getWeatherForRoute(cities, apiKey);
+
 
         for (String city : cities) {
             cityPOJO = new City();
@@ -62,12 +66,12 @@ public class WeatherRouteResponseProcessor {
         return output;
     }
 
-    public Map<String, WeatherStack> getWeatherForRoute(List<String> cities, String apiKey) {
+    public Map<String, WeatherStack> getWeatherForRoute(List<String> cities, String apiKey) throws MalformedURLException{
         //https://stackoverflow.com/questions/7488643/how-to-convert-comma-separated-string-to-list
 
         Map<String, WeatherStack> responsePOJOs = new HashMap<>();
         WeatherStack weatherStack;
-        String weatherJSON;
+        String weatherJSON = "";
 
         for (String city : cities) {
             weatherJSON = this.weatherClient.getFiveDayForecast(city, apiKey);
