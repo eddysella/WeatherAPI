@@ -9,15 +9,24 @@ public class Index {
 
     @GetMapping(value = "/")
     public ResponseEntity<String> index() {
-        String output = "Welcome to a Weather REST API service. \n" +
-                        "The following endpoints are available: \n" +
-                        "1) GET: /weatherRoute - Returns a JSON response with the weather for each city in a specified route \n" +
-                        "Query Params: \n" +
-                        "date: the date of travel (i.e. dd-MM-yyyy), must be within the next 5 days\n" +
-                        "cities: one/multiple city ids separated by '&' \n" +
-                        "apikey: an API key from :  https://developer.accuweather.com/packages (limited trial should suffice) \n" +
-                        "2) GET: /lastFiveQueries - Returns the JSON response for each of the last 5 routes which were queried \n" +
-                        "3) DELETE: /lastFiveQueries - Deletes all previously stored queries from the database";
+        String output =
+        "Welcome to a Weather REST API service. \n" +
+        "The following endpoints are available: \n" +
+        "1) GET: /weatherRoute - Returns a JSON response with the weather for each city in a specified route \n" +
+        "\tQuery Params: \n" +
+        "\ta) date: the date of travel (i.e. dd-MM-yyyy), must be within the next 5 days \n" +
+        "\tb) cities: one/multiple city key(s) separated by '&' \n" +
+        "\t\tcity keys found at: https://github.com/eddysella/WeatherAPI/blob/herokuTest/src/main/java/edoardosella/WeatherAPI/Resources/accuweather-city-keys.txt " +
+        "by searching for a country and looking for the 'Key' property above it \n " +
+        "\t\ti.e. if searching for 'Dhaka': \n" +
+        "\t\t'key' : '28143'  <--- KEY \n " +
+        "\t\t'Type' : 'City' \n" +
+        "\t\t'Rank' : 10 \n" +
+        "\t\t'LocalizedName' : 'Dhaka' \n" +
+        "\t\t'EnglishName' : 'Dhaka'  <---- Search Result \n" +
+        "\tc) apikey: an API key from :  https://developer.accuweather.com/packages (limited trial should suffice) \n" +
+        "2) GET: /lastFiveQueries - Returns the JSON response for each of the last 5 routes which were queried \n" +
+        "3) DELETE: /lastFiveQueries - Deletes all previously stored queries from the database";
 
         return ResponseEntity.ok(output);
     }
