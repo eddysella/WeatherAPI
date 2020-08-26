@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LastFiveQueries {
+public class Controller {
 
     @Autowired
-    private LastFiveQueriesResponseProcessor responseProcessor;
+    private ResponseProcessor responseProcessor;
 
-    public LastFiveQueries(){}
+    public Controller(){}
 
     @GetMapping(value="/lastFiveQueries")
     public ResponseEntity<String> getLastFiveQueries(){

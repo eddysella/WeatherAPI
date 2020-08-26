@@ -1,21 +1,22 @@
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.LastFiveQueries;
 
-import edoardosella.WeatherAPI.HTTPResources.JSONProcessor;
+import edoardosella.WeatherAPI.Resources.JSONProcessor;
 import edoardosella.WeatherAPI.JPA.Models.PreviousRoute;
 import edoardosella.WeatherAPI.JPA.Repositories.PreviousRouteRepo;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.LastFiveQueries.POJO.Output.QueryList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 @Component
-public class LastFiveQueriesResponseProcessor {
+public class ResponseProcessor {
 
     @Autowired
     PreviousRouteRepo previousRouteRepo;
     JSONProcessor jsonProcessor;
 
-    public LastFiveQueriesResponseProcessor(){
+    public ResponseProcessor(){
         jsonProcessor = new JSONProcessor();
     }
 

@@ -1,7 +1,5 @@
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.LastFiveQueries.POJO.Output;
 
-import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Output.Route;
-
 import java.util.ArrayList;
 import java.util.List;
 

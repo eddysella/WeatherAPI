@@ -1,7 +1,6 @@
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute;
 
-import edoardosella.WeatherAPI.HTTPResources.HTTPClient;
-import edoardosella.WeatherAPI.HTTPResources.JSONProcessor;
+import edoardosella.WeatherAPI.Resources.JSONProcessor;
 import edoardosella.WeatherAPI.JPA.Models.PreviousRoute;
 import edoardosella.WeatherAPI.JPA.Repositories.PreviousRouteRepo;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Output.City;
@@ -14,14 +13,14 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class WeatherRouteResponseProcessor {
+public class ResponseProcessor {
     private HTTPClient weatherClient;
     private JSONProcessor jsonProcessor;
 
     @Autowired
     PreviousRouteRepo previousRouteRepo;
 
-    public WeatherRouteResponseProcessor(){
+    public ResponseProcessor(){
         this.weatherClient = new HTTPClient();
         this.jsonProcessor = new JSONProcessor();
     }
