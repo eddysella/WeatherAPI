@@ -12,8 +12,7 @@ public class PreviousRoute implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Lob
-    @Column(name = "route")
+    @Column(name = "route", columnDefinition = "TEXT")
     private String route;
 
     public PreviousRoute() {}
