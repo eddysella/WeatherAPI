@@ -33,7 +33,7 @@ public class LastFiveQueriesResponseProcessor {
 
             output = jsonProcessor.objectToJSONString(queryList);
         }else{
-            output = "";
+            output = "No Queries in Database";
         }
 
         return output;
