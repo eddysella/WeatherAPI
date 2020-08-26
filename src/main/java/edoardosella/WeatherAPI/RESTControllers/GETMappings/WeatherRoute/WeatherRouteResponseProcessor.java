@@ -34,14 +34,23 @@ public class WeatherRouteResponseProcessor {
         Map<String, WeatherStack> responsePOJOs = getWeatherForRoute(citiesParam, apiKey);
 
         for (Map.Entry<String, WeatherStack> city : responsePOJOs.entrySet()) {
-            forecast = city.getValue().getDailyForecasts().get(dateDifference);
-            average = (forecast.getTemperature().getMinimum().getValue() + forecast.getTemperature().getMaximum().getValue()) / 2;
             cityPOJO = new City();
-            cityPOJO.setCityID(city.getKey());
-            cityPOJO.setMinTemp(forecast.getTemperature().getMinimum().getValue());
-            cityPOJO.setMaxTemp(forecast.getTemperature().getMaximum().getValue());
-            cityPOJO.setAverageTemp(average);
-            cityPOJO.setWeatherDescription(forecast.getDay().getIconPhrase());
+            try{
+                forecast = city.getValue().getDailyForecasts().get(dateDifference);
+                average = (forecast.getTemperature().getMinimum().getValue() + forecast.getTemperature().getMaximum().getValue()) / 2;
+                cityPOJO.setCityID(city.getKey());
+                cityPOJO.setMinTemp(forecast.getTemperature().getMinimum().getValue());
+                cityPOJO.setMaxTemp(forecast.getTemperature().getMaximum().getValue());
+                cityPOJO.setAverageTemp(average);
+                cityPOJO.setWeatherDescription(forecast.getDay().getIconPhrase());
+            }catch(IndexOutOfBoundsException e){
+                cityPOJO.setCityID(city.getKey());
+                cityPOJO.setMinTemp(0);
+                cityPOJO.setMaxTemp(0);
+                cityPOJO.setAverageTemp(0);
+                cityPOJO.setWeatherDescription("Unavailable");
+            }
+
             route.addCity(cityPOJO);
         }
 
