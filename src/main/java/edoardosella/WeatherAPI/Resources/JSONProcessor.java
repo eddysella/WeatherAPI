@@ -1,4 +1,4 @@
-package edoardosella.WeatherAPI.HTTPResources;
+package edoardosella.WeatherAPI.Resources;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

@@ -1,4 +1,4 @@
-package edoardosella.WeatherAPI.HTTPResources;
+package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute;
 
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
