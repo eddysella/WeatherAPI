@@ -10,9 +10,11 @@ public class Index {
     public String index(){
         return "Welcome to a Weather REST API service. \n" +
                 "The following endpoints are available: \n" +
-                "1) /weather : Returns a JSON response with the weather for a specified route \n" +
+                "1) /weatherRoute : Returns a JSON response with the weather for each city in a specified route \n" +
                 "Query Params: \n" +
-                "date (i.e. dd-MM-yyyy) + cities (multiple cities separated by '+') \n" +
+                "date: the date of travel (i.e. dd-MM-yyyy), must be within the next 5 days\n" +
+                "cities: one/multiple city ids separated by '&' \n" +
+                "apikey: an API key from :  https://developer.accuweather.com/packages (limited trial should suffice) \n"+
                 "2) /lastFive : Returns the JSON response for each of the last 5 routes which were queried";
     }
 }
