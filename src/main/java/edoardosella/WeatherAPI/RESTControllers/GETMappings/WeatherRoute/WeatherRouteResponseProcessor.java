@@ -1,24 +1,24 @@
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute;
 
 import edoardosella.WeatherAPI.JPA.Models.PreviousRoute;
-import edoardosella.WeatherAPI.JPA.Repositories.PreviousRouteRepo;
+import edoardosella.WeatherAPI.JPA.Repositories.PreviousRoutes.PreviousRoutesManager;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Output.City;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Output.Route;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.WeatherStack.DailyForecast;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.WeatherStack.WeatherStack;
 import edoardosella.WeatherAPI.Resources.JSONProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Component
+@Service
 public class WeatherRouteResponseProcessor {
     private HTTPClient weatherClient;
     private JSONProcessor jsonProcessor;
 
     @Autowired
-    PreviousRouteRepo previousRouteRepo;
+    PreviousRoutesManager previousRouteManager;
 
     public WeatherRouteResponseProcessor() {
         this.weatherClient = new HTTPClient();
@@ -31,20 +31,21 @@ public class WeatherRouteResponseProcessor {
         DailyForecast forecast;
         City cityPOJO;
         Route route = new Route();
-        Map<String, WeatherStack> responsePOJOs = getWeatherForRoute(citiesParam, apiKey);
+        List<String> cities = new ArrayList<String>(Arrays.asList(citiesParam.split("&")));
+        Map<String, WeatherStack> responsePOJOs = getWeatherForRoute(cities, apiKey);
 
-        for (Map.Entry<String, WeatherStack> city : responsePOJOs.entrySet()) {
+        for (String city : cities) {
             cityPOJO = new City();
             try{
-                forecast = city.getValue().getDailyForecasts().get(dateDifference);
+                forecast = responsePOJOs.get(city).getDailyForecasts().get(dateDifference);
                 average = (forecast.getTemperature().getMinimum().getValue() + forecast.getTemperature().getMaximum().getValue()) / 2;
-                cityPOJO.setCityID(city.getKey());
+                cityPOJO.setCityID(city);
                 cityPOJO.setMinTemp(forecast.getTemperature().getMinimum().getValue());
                 cityPOJO.setMaxTemp(forecast.getTemperature().getMaximum().getValue());
                 cityPOJO.setAverageTemp(average);
                 cityPOJO.setWeatherDescription(forecast.getDay().getIconPhrase());
             }catch(IndexOutOfBoundsException e){
-                cityPOJO.setCityID(city.getKey());
+                cityPOJO.setCityID(city);
                 cityPOJO.setMinTemp(0);
                 cityPOJO.setMaxTemp(0);
                 cityPOJO.setAverageTemp(0);
@@ -56,14 +57,13 @@ public class WeatherRouteResponseProcessor {
 
         output = jsonProcessor.objectToJSONString(route);
 
-        previousRouteRepo.save(new PreviousRoute(output));
+        previousRouteManager.save(new PreviousRoute(output));
 
         return output;
     }
 
-    public Map<String, WeatherStack> getWeatherForRoute(String citiesParam, String apiKey) {
+    public Map<String, WeatherStack> getWeatherForRoute(List<String> cities, String apiKey) {
         //https://stackoverflow.com/questions/7488643/how-to-convert-comma-separated-string-to-list
-        List<String> cities = new ArrayList<String>(Arrays.asList(citiesParam.split("&")));
 
         Map<String, WeatherStack> responsePOJOs = new HashMap<>();
         WeatherStack weatherStack;
