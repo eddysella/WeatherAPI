@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class ResponseProcessor {
+public class WeatherRouteResponseProcessor {
     private HTTPClient weatherClient;
     private JSONProcessor jsonProcessor;
 
     @Autowired
     PreviousRouteRepo previousRouteRepo;
 
-    public ResponseProcessor(){
+    public WeatherRouteResponseProcessor(){
         this.weatherClient = new HTTPClient();
         this.jsonProcessor = new JSONProcessor();
     }

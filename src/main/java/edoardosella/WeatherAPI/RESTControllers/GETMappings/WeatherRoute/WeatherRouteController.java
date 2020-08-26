@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
+public class WeatherRouteController {
 
     @Autowired
-    private ResponseProcessor responseProcessor;
+    private WeatherRouteResponseProcessor responseProcessor;
 
-    Controller(){}
+    WeatherRouteController(){}
 
     @GetMapping(value="/weatherRoute")
     public ResponseEntity<String> getWeatherRoute(@RequestParam(value="date") String dateParam, @RequestParam(value="cities") String citiesParam, @RequestParam(value="apikey", defaultValue = "null") String apiKey){

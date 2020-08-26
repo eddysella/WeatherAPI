@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ResponseProcessor {
+public class LastFiveQueriesResponseProcessor {
 
     @Autowired
     PreviousRouteRepo previousRouteRepo;
     JSONProcessor jsonProcessor;
 
-    public ResponseProcessor(){
+    public LastFiveQueriesResponseProcessor(){
         jsonProcessor = new JSONProcessor();
     }
 
@@ -26,7 +26,7 @@ public class ResponseProcessor {
         QueryList queryList = new QueryList();
 
         if(previousRouteRepo.count() > 0){
-            List<PreviousRoute> lastFiveQueries = previousRouteRepo.findLast5ByOrderById();
+            List<PreviousRoute> lastFiveQueries = previousRouteRepo.findTop5ByOrderByIdDesc();
 
             for(PreviousRoute route : lastFiveQueries) {
                 queryList.addRoute(route.getRoute());
