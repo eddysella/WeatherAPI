@@ -1,31 +1,22 @@
 package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute;
 
-import edoardosella.WeatherAPI.HTTPResources.HTTPClient;
-import edoardosella.WeatherAPI.HTTPResources.Processors.JSONProcessor;
-import edoardosella.WeatherAPI.HTTPResources.Processors.ResponseProcessor;
-import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.WeatherStack.WeatherStack;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
-
 @RestController
 public class WeatherRoute {
-    private HTTPClient weather;
-    private JSONProcessor jsonProcessor;
-    private ResponseProcessor responseProcessor;
 
-    WeatherRoute(){
-        this.weather = new HTTPClient();
-        this.jsonProcessor = new JSONProcessor();
-        this.responseProcessor = new ResponseProcessor();
-    }
+    @Autowired
+    private WeatherRouteResponseProcessor responseProcessor;
+
+    WeatherRoute(){}
 
     @GetMapping(value="/weatherRoute")
     public ResponseEntity<String> getWeatherRoute(@RequestParam(value="date") String dateParam, @RequestParam(value="cities") String citiesParam, @RequestParam(value="apikey", defaultValue = "null") String apiKey){
@@ -36,19 +27,7 @@ public class WeatherRoute {
             return ResponseEntity.badRequest().build();
         }
 
-        //https://stackoverflow.com/questions/7488643/how-to-convert-comma-separated-string-to-list
-        List<String> cities = new ArrayList<String>(Arrays.asList(citiesParam.split("&")));
-
-        Map<String, WeatherStack> responsePOJOs = new HashMap<>();
-        WeatherStack weatherStack = new WeatherStack();
-
-        for(String city : cities){
-            String weatherJSON = this.weather.getFiveDayForecast(city, apiKey);
-            weatherStack = (WeatherStack) this.jsonProcessor.jsonToObject(weatherJSON, WeatherStack.class);
-            responsePOJOs.put(city, weatherStack);
-        }
-
-        String output = this.responseProcessor.getWeatherRoute(responsePOJOs, dateDifference);
+        String output = this.responseProcessor.processRequest(citiesParam, apiKey, dateDifference);
 
         return ResponseEntity.ok(output);
     }
