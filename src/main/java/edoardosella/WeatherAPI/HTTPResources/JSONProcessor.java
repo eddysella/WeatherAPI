@@ -1,4 +1,4 @@
-package edoardosella.WeatherAPI.HTTPResources.Processors;
+package edoardosella.WeatherAPI.HTTPResources;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -11,7 +11,7 @@ public class JSONProcessor {
         this.objectMapper = new ObjectMapper();
     }
 
-    public String objectToJSON(Object object){
+    public String objectToJSONString(Object object){
         try {
             return objectMapper.writeValueAsString(object);
 
