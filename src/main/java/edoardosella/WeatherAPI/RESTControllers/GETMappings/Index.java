@@ -11,12 +11,13 @@ public class Index {
     public ResponseEntity<String> index() {
         String output = "Welcome to a Weather REST API service. \n" +
                         "The following endpoints are available: \n" +
-                        "1) /weatherRoute : Returns a JSON response with the weather for each city in a specified route \n" +
+                        "1) GET: /weatherRoute - Returns a JSON response with the weather for each city in a specified route \n" +
                         "Query Params: \n" +
                         "date: the date of travel (i.e. dd-MM-yyyy), must be within the next 5 days\n" +
                         "cities: one/multiple city ids separated by '&' \n" +
                         "apikey: an API key from :  https://developer.accuweather.com/packages (limited trial should suffice) \n" +
-                        "2) /lastFiveQueries : Returns the JSON response for each of the last 5 routes which were queried";
+                        "2) GET: /lastFiveQueries - Returns the JSON response for each of the last 5 routes which were queried \n" +
+                        "3) DELETE: /lastFiveQueries - Deletes all previously stored queries from the database";
 
         return ResponseEntity.ok(output);
     }
