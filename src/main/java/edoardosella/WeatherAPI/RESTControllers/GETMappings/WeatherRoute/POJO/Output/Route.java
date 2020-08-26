@@ -26,4 +26,15 @@ public class Route {
     public void setRoute(List<City> route) {
         this.route = route;
     }
+
+    @Override
+    public String toString(){
+        String output = "";
+
+        for(City city : this.route){
+            output += city.toString();
+        }
+
+        return output;
+    }
 }

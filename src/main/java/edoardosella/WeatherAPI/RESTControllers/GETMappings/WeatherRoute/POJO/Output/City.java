@@ -59,4 +59,15 @@ public class City implements Serializable {
     public void setWeatherDescription(String weatherDescription) {
         this.weatherDescription = weatherDescription;
     }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "cityID='" + cityID + '\'' +
+                ", minTemp=" + minTemp +
+                ", maxTemp=" + maxTemp +
+                ", averageTemp=" + averageTemp +
+                ", weatherDescription='" + weatherDescription + '\'' +
+                '}';
+    }
 }
