@@ -5,7 +5,7 @@ A REST API service for Investiere Internship
 
 It is recommened to access both the deployed version and the local version with Postman by sending a GET request to the two links listed below.
 
-The index page lists instructions and the available endpoints with query params.
+The index ( / ) page lists instructions and the available endpoints with query params.
 
 # Deployed Version
 
