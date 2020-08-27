@@ -16,7 +16,7 @@ public class Index {
                         "\tQuery Params: \n" +
                         "\ta) date: the date of travel (i.e. dd-MM-yyyy), must be within the next 5 days (including today) \n" +
                         "\tb) cities: one/multiple city key(s) separated by '&' \n" +
-                        "\t\tcity keys found at: https://github.com/eddysella/WeatherAPI/blob/herokuTest/src/main/java/edoardosella/WeatherAPI/Resources/accuweather-city-keys.txt " +
+                        "\t\tcity keys found at: https://github.com/eddysella/WeatherAPI/blob/master/src/main/java/edoardosella/WeatherAPI/Resources/accuweather-city-keys.txt " +
                         "by searching for a country and looking for the 'Key' property above it \n " +
                         "\t\ti.e. if searching for 'Dhaka': \n" +
                         "\t\t'key' : '28143'  <--- KEY \n " +
