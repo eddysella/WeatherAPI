@@ -20,39 +20,32 @@ public class WeatherRouteController {
     @Autowired
     private WeatherRouteResponseProcessor responseProcessor;
 
-    WeatherRouteController(){}
+    WeatherRouteController() { }
 
     @GetMapping(value = "/weatherRoute")
-    public ResponseEntity<String> getWeatherRoute(@RequestParam(value = "date") String dateParam, @RequestParam(value = "cities") String citiesParam, @RequestParam(value = "apikey", defaultValue = "null") String apiKey) {
-        String output;
+    public ResponseEntity<String> getWeatherRoute(@RequestParam(value = "date") String dateParam, @RequestParam(value = "cities") String citiesParam, @RequestParam(value = "apikey", defaultValue = "null") String apikeyParam) {
         int dateDifference;
-        try{
-             dateDifference = calculateDateDifference(dateParam);
-        }catch(Exception e){
+        try {
+            dateDifference = calculateDateDifference(dateParam);
+            if (dateDifference < 0) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Date already passed");
+            } else if (dateDifference > 4) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Date too far in the future (max 4 days ahead)");
+            }
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid date param Format");
         }
-
-        if (dateDifference < 0) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Date already passed");
-        }
-
-        if (dateDifference < 0 || dateDifference > 4) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Date too far in the future (max 4 days ahead)");
-        }
-
-        if (!(validateCitiesParam(citiesParam))){
+        if (!(validateCitiesParam(citiesParam))) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid cities param format");
         }
-
-        try{
-            output = this.responseProcessor.processRequest(citiesParam, apiKey, dateDifference);
-        } catch (MalformedURLException e){
+        try {
+            String output = this.responseProcessor.processRequest(citiesParam, apikeyParam, dateDifference);
+            return ResponseEntity.ok(output);
+        } catch (MalformedURLException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("API key invalid or Weather service unavailable " + e.getMessage());
-        } catch (PatternSyntaxException e){
+        } catch (PatternSyntaxException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid cities param format");
         }
-
-        return ResponseEntity.ok(output);
     }
 
     //https://stackoverflow.com/questions/3299972/difference-in-days-between-two-dates-in-java
@@ -64,9 +57,9 @@ public class WeatherRouteController {
     }
 
     //https://www.geeksforgeeks.org/how-to-check-if-string-contains-only-digits-in-java/
-    private boolean validateCitiesParam(String cities){
+    private boolean validateCitiesParam(String cities) {
         for (int i = 0; i < cities.length(); i++) {
-            if (!(Character.isDigit(cities.charAt(i)) || cities.charAt(i) == '&')){
+            if (!(Character.isDigit(cities.charAt(i)) || cities.charAt(i) == '&')) {
                 return false;
             }
         }

@@ -10,15 +10,34 @@ import java.net.MalformedURLException;
 
 public class HTTPClient {
 
-    public HTTPClient() {
+    public HTTPClient() { }
+
+    public String getFiveDayForecast(String cityID, String passedKey) throws MalformedURLException {
+        HttpUrl httpUrl = buildURL(cityID, passedKey);
+        Request request = buildRequest(httpUrl);
+        String output = executeRequest(request);
+        return output;
     }
 
-    public String getFiveDayForecast(String cityID, String passedKey) throws MalformedURLException{
-        OkHttpClient httpClient = new OkHttpClient();
-        String output = "";
+    private String executeRequest(Request request) throws MalformedURLException {
         int responseCode = -1;
+        OkHttpClient httpClient = new OkHttpClient();
 
-        HttpUrl httpUrl = new HttpUrl.Builder()
+        try (Response response = httpClient.newCall(request).execute()) {
+            responseCode = response.code();
+            if (responseCode == 200) {
+                return response.body().string();
+            }
+        } catch (IOException e) { }
+        // catches all cases
+        if (responseCode != 200) {
+            throw new MalformedURLException("Error Code: " + responseCode);
+        }
+        return null;
+    }
+
+    private HttpUrl buildURL(String cityID, String passedKey) {
+        return new HttpUrl.Builder()
                 .scheme("http")
                 .host("dataservice.accuweather.com")
                 .addPathSegment("forecasts")
@@ -31,23 +50,11 @@ public class HTTPClient {
                 .addQueryParameter("details", "false")
                 .addQueryParameter("metric", "true")
                 .build();
+    }
 
-        Request request = new Request.Builder()
+    private Request buildRequest(HttpUrl httpUrl) {
+        return new Request.Builder()
                 .url(httpUrl)
                 .build();
-
-        try (Response response = httpClient.newCall(request).execute()){
-            responseCode = response.code();
-            System.out.println("Code : " + responseCode);
-            if (responseCode == 200){
-                output = response.body().string();
-            }
-        }catch (IOException e){}
-
-        if (responseCode != 200){
-            throw new MalformedURLException("Error Code: " + responseCode);
-        }
-
-        return output;
     }
 }

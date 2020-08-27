@@ -21,20 +21,16 @@ public class LastFiveQueriesResponseProcessor {
     }
 
     public String getLastFiveQueries() {
-        String output;
-        QueryList queryList = new QueryList();
-
-        if (previousRouteRepo.count() > 0) {
-            List<PreviousRoute> lastFiveQueries = previousRouteRepo.findTop5ByOrderByIdDesc();
-            for (PreviousRoute route : lastFiveQueries) {
-                queryList.addRoute(route.getRoute());
-            }
-            output = jsonProcessor.objectToJSONString(queryList);
-
-        } else {
-            output = "No Queries in Database";
-        }
-
+        String  output = jsonProcessor.objectToJSONString(compileQueryListFromRepo());
         return output;
+    }
+
+    private QueryList compileQueryListFromRepo() {
+        QueryList queryList = new QueryList();
+        List<PreviousRoute> lastFiveQueries = previousRouteRepo.findTop5ByOrderByIdDesc();
+        for (PreviousRoute route : lastFiveQueries) {
+            queryList.addRoute(route.getRoute());
+        }
+        return queryList;
     }
 }

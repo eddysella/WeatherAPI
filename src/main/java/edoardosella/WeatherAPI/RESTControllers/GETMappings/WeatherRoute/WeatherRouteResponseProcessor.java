@@ -27,58 +27,76 @@ public class WeatherRouteResponseProcessor {
         this.jsonProcessor = new JSONProcessor();
     }
 
-    public String processRequest(String citiesParam, String apiKey, int dateDifference) throws MalformedURLException, PatternSyntaxException{
-        String output;
-        double average;
-        DailyForecast forecast;
-        City cityPOJO;
-        List<String> cities;
-        Route route = new Route();
-        cities = new ArrayList<String>(Arrays.asList(citiesParam.split("&")));
-        Map<String, WeatherStack> responsePOJOs = getWeatherForRoute(cities, apiKey);
-
-
-        for (String city : cities) {
-            cityPOJO = new City();
-            try{
-                forecast = responsePOJOs.get(city).getDailyForecasts().get(dateDifference);
-                average = (forecast.getTemperature().getMinimum().getValue() + forecast.getTemperature().getMaximum().getValue()) / 2;
-                cityPOJO.setCityID(city);
-                cityPOJO.setMinTemp(forecast.getTemperature().getMinimum().getValue());
-                cityPOJO.setMaxTemp(forecast.getTemperature().getMaximum().getValue());
-                cityPOJO.setAverageTemp(average);
-                cityPOJO.setWeatherDescription(forecast.getDay().getIconPhrase());
-            }catch(IndexOutOfBoundsException e){
-                cityPOJO.setCityID(city);
-                cityPOJO.setMinTemp(0);
-                cityPOJO.setMaxTemp(0);
-                cityPOJO.setAverageTemp(0);
-                cityPOJO.setWeatherDescription("Unavailable");
-            }
-
-            route.addCity(cityPOJO);
-        }
-
-        output = jsonProcessor.objectToJSONString(route);
-
+    public String processRequest(String citiesParam, String apikey, int dateDifference) throws MalformedURLException, PatternSyntaxException {
+        List<String> cities = new ArrayList<>(Arrays.asList(citiesParam.split("&")));
+        Route route = processRoute(cities, apikey, dateDifference);
+        String output = jsonProcessor.objectToJSONString(route);
         previousRouteManager.save(new PreviousRoute(output));
-
         return output;
     }
 
-    public Map<String, WeatherStack> getWeatherForRoute(List<String> cities, String apiKey) throws MalformedURLException{
+    private Route processRoute(List<String> cities, String apikey, int dateDifference) throws MalformedURLException {
         //https://stackoverflow.com/questions/7488643/how-to-convert-comma-separated-string-to-list
+        Map<String, WeatherStack> responsePOJOs = getWeatherByCity(cities, apikey);
+        Route route = compileRoute(cities, responsePOJOs, dateDifference);
+        return route;
 
+    }
+
+    private Route compileRoute(List<String> cities, Map<String, WeatherStack> responsePOJOs, int dateDifference) {
+        Route route = new Route();
+        for (String cityName : cities) {
+            try {
+                DailyForecast forecast = responsePOJOs.get(cityName).getDailyForecasts().get(dateDifference);
+                route.addCity(createCityPOJO(cityName, forecast));
+            } catch (IndexOutOfBoundsException e) {
+                route.addCity(createEmptyCityPOJO(cityName));
+            }
+        }
+        return route;
+    }
+
+    private City createEmptyCityPOJO(String cityName) {
+        City city = new City();
+        city.setCityID(cityName);
+        city.setMinTemp(0);
+        city.setMaxTemp(0);
+        city.setAverageTemp(0);
+        city.setWeatherDescription("Unavailable");
+        return city;
+    }
+
+    private City createCityPOJO(String cityName, DailyForecast forecast) {
+        City city = new City();
+        double average = calculateAvg(forecast);
+        city.setCityID(cityName);
+        city.setMinTemp(forecast.getTemperature().getMinimum().getValue());
+        city.setMaxTemp(forecast.getTemperature().getMaximum().getValue());
+        city.setAverageTemp(average);
+        city.setWeatherDescription(forecast.getDay().getIconPhrase());
+        return city;
+    }
+
+    private double calculateAvg(DailyForecast forecast) {
+        double minimum, maximum, average, output;
+        minimum = maximum = average = output = 0;
+        minimum = forecast.getTemperature().getMinimum().getValue();
+        maximum = forecast.getTemperature().getMaximum().getValue();
+        average = minimum + maximum;
+        if (average != 0) {
+            output = average / 2;
+        }
+        return output;
+    }
+
+
+    public Map<String, WeatherStack> getWeatherByCity(List<String> cities, String apiKey) throws MalformedURLException {
         Map<String, WeatherStack> responsePOJOs = new HashMap<>();
-        WeatherStack weatherStack;
-        String weatherJSON = "";
-
         for (String city : cities) {
-            weatherJSON = this.weatherClient.getFiveDayForecast(city, apiKey);
-            weatherStack = (WeatherStack) this.jsonProcessor.jsonToObject(weatherJSON, WeatherStack.class);
+            String weatherJSON = this.weatherClient.getFiveDayForecast(city, apiKey);
+            WeatherStack weatherStack = (WeatherStack) this.jsonProcessor.jsonToObject(weatherJSON, WeatherStack.class);
             responsePOJOs.put(city, weatherStack);
         }
-
         return responsePOJOs;
     }
 }
