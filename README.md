@@ -3,9 +3,19 @@ A REST API service for Investiere Internship
 
 # Instructions
 
-It is recommended to access both the deployed version and the local version with Postman by sending a GET request to either of the two links listed below.
+It is recommended to access both the deployed version and the local version with Postman by sending a GET request to the index page ( / ).
 
 The index ( / ) page lists instructions and the available endpoints with query params.
+![alt text](https://github.com/eddysella/WeatherAPI/blob/master/readmeImages/indexSample.png?raw=true)
+
+GET: /weatherRoute
+![alt text](https://github.com/eddysella/WeatherAPI/blob/master/readmeImages/GETweatherRouteSample.jpg?raw=true)
+
+GET: /lastFiveQueries
+![alt text](https://github.com/eddysella/WeatherAPI/blob/master/readmeImages/GETLastFiveQueriesSample.png?raw=true)
+
+DELETE: /lastFiveQueries
+![alt text](https://github.com/eddysella/WeatherAPI/blob/master/readmeImages/DELETELastFiveQueriesSample.png?raw=true)
 
 # Deployed Version
 
