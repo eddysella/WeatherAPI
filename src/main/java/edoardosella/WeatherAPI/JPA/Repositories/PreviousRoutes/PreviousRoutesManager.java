@@ -10,15 +10,15 @@ public class PreviousRoutesManager {
     @Autowired
     PreviousRoutesCRUDInterface previousRouteRepo;
 
-    public PreviousRoutesManager(){}
+    public PreviousRoutesManager() { }
 
-    public void save(PreviousRoute previousRoute){
+    public void save(PreviousRoute previousRoute) {
         truncateTableSize();
         previousRouteRepo.save(previousRoute);
     }
 
-    private void truncateTableSize(){
-        if(previousRouteRepo.count() == 5){
+    private void truncateTableSize() {
+        if (previousRouteRepo.count() == 5) {
             previousRouteRepo.delete(previousRouteRepo.findTopByOrderByIdAsc());
         }
     }

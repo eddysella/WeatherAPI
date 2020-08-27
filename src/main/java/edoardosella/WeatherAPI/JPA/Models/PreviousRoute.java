@@ -15,7 +15,7 @@ public class PreviousRoute implements Serializable {
     @Column(name = "route", columnDefinition = "TEXT")
     private String route;
 
-    public PreviousRoute() {}
+    public PreviousRoute() { }
 
     public PreviousRoute(String route) {
         this.route = route;

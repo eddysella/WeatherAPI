@@ -11,7 +11,7 @@ public class LastFiveQueriesController {
     @Autowired
     private LastFiveQueriesResponseProcessor responseProcessor;
 
-    public LastFiveQueriesController() {}
+    public LastFiveQueriesController() { }
 
     @GetMapping(value = "/lastFiveQueries")
     public ResponseEntity<String> getLastFiveQueries() {

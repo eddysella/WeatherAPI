@@ -8,5 +8,6 @@ import java.util.List;
 public interface PreviousRoutesCRUDInterface extends CrudRepository<PreviousRoute, Long> {
     //https://stackoverflow.com/questions/27567351/get-last-records-ordered-by-data-on-spring-data
     List<PreviousRoute> findTop5ByOrderByIdDesc();
+
     PreviousRoute findTopByOrderByIdAsc();
 }

@@ -12,12 +12,11 @@ public class DeleteAllPreviousRoutesController {
     @Autowired
     PreviousRoutesCRUDInterface previousRouteRepo;
 
-    public DeleteAllPreviousRoutesController(){}
+    public DeleteAllPreviousRoutesController() { }
 
     @DeleteMapping(value = "/lastFiveQueries")
     public ResponseEntity<String> deleteAllPreviousRoutes() {
         previousRouteRepo.deleteAll();
-
         return ResponseEntity.ok("All previous routes deleted");
     }
 }
