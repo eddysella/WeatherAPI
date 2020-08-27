@@ -28,6 +28,7 @@ public class WeatherRouteResponseProcessor {
     }
 
     public String processRequest(String citiesParam, String apikey, int dateDifference) throws MalformedURLException, PatternSyntaxException {
+        //https://stackoverflow.com/questions/7488643/how-to-convert-comma-separated-string-to-list
         List<String> cities = new ArrayList<>(Arrays.asList(citiesParam.split("&")));
         Route route = processRoute(cities, apikey, dateDifference);
         String output = jsonProcessor.objectToJSONString(route);
@@ -36,7 +37,6 @@ public class WeatherRouteResponseProcessor {
     }
 
     private Route processRoute(List<String> cities, String apikey, int dateDifference) throws MalformedURLException {
-        //https://stackoverflow.com/questions/7488643/how-to-convert-comma-separated-string-to-list
         Map<String, WeatherStack> responsePOJOs = getWeatherByCity(cities, apikey);
         Route route = compileRoute(cities, responsePOJOs, dateDifference);
         return route;
