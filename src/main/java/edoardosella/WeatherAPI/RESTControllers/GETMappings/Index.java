@@ -15,7 +15,7 @@ public class Index {
                         "1) GET: /weatherRoute - Returns a JSON response with the weather for each city in a specified route \n" +
                         "\tQuery Params: \n" +
                         "\ta) date: the date of travel (i.e. dd-MM-yyyy), must be within the next 5 days (including today) \n" +
-                        "\tb) cities: one/multiple city key(s) separated by '&' \n" +
+                        "\tb) cities: one/multiple city key(s) separated by character encoding of '&' == '%26' i.e. cityKey%26cityKey\n" +
                         "\t\tcity keys found at: https://github.com/eddysella/WeatherAPI/blob/master/src/main/java/edoardosella/WeatherAPI/Resources/accuweather-city-keys.txt " +
                         "by searching for a country and looking for the 'Key' property above it \n " +
                         "\t\ti.e. if searching for 'Dhaka': \n" +
