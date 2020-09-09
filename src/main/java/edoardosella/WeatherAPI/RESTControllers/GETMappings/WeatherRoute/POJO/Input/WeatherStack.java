@@ -15,13 +15,13 @@ import java.util.Map;
 })
 public class WeatherStack implements Serializable {
 
+    private final static long serialVersionUID = 5782077206797781806L;
     @JsonProperty("Headline")
     private Headline headline;
     @JsonProperty("DailyForecasts")
     private List<DailyForecast> dailyForecasts = new ArrayList<DailyForecast>();
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 5782077206797781806L;
 
     /**
      * No args constructor for use in serialization

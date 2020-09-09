@@ -1,14 +1,14 @@
-package edoardosella.WeatherAPI.RESTControllers.GETMappings;
+package edoardosella.WeatherAPI.RESTControllers.GETMappings.Index;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class Index {
+@RestController(value = "IndexController")
+class Controller {
 
     @GetMapping(value = "/")
-    public ResponseEntity<String> index() {
+    ResponseEntity<String> getIndex() {
         String output =
                 "Welcome to a Weather REST API service. \n" +
                         "The following endpoints are available: \n" +
@@ -25,8 +25,8 @@ public class Index {
                         "\t\t'LocalizedName' : 'Dhaka' \n" +
                         "\t\t'EnglishName' : 'Dhaka'  <---- Search Result \n" +
                         "\tc) apikey: an API key from :  https://developer.accuweather.com/packages (limited trial should suffice) \n" +
-                        "2) GET: /lastFiveQueries - Returns the JSON response for each of the last 5 routes which were queried \n" +
-                        "3) DELETE: /lastFiveQueries - Deletes all previously stored queries from the database";
+                        "2) GET: /lastFiveWeatherRoutes - Returns the JSON response for each of the last 5 routes which were queried \n" +
+                        "3) DELETE: /lastFiveWeatherRoutes - Deletes all previously stored queries from the database";
 
         return ResponseEntity.ok(output);
     }

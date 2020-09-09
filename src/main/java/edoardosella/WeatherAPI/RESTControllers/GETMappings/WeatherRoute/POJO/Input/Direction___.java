@@ -14,6 +14,7 @@ import java.util.Map;
 })
 public class Direction___ implements Serializable {
 
+    private final static long serialVersionUID = -4263300449634197624L;
     @JsonProperty("Degrees")
     private long degrees;
     @JsonProperty("Localized")
@@ -22,7 +23,6 @@ public class Direction___ implements Serializable {
     private String english;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -4263300449634197624L;
 
     /**
      * No args constructor for use in serialization

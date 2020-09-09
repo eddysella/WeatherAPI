@@ -16,6 +16,7 @@ import java.util.Map;
 })
 public class AirAndPollen implements Serializable {
 
+    private final static long serialVersionUID = 970996431767907208L;
     @JsonProperty("Name")
     private String name;
     @JsonProperty("Value")
@@ -28,7 +29,6 @@ public class AirAndPollen implements Serializable {
     private String type;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 970996431767907208L;
 
     /**
      * No args constructor for use in serialization

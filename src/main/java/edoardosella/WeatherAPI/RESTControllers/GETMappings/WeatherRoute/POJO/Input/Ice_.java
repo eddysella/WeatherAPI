@@ -14,6 +14,7 @@ import java.util.Map;
 })
 public class Ice_ implements Serializable {
 
+    private final static long serialVersionUID = 2725503247146513682L;
     @JsonProperty("Value")
     private long value;
     @JsonProperty("Unit")
@@ -22,7 +23,6 @@ public class Ice_ implements Serializable {
     private long unitType;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 2725503247146513682L;
 
     /**
      * No args constructor for use in serialization

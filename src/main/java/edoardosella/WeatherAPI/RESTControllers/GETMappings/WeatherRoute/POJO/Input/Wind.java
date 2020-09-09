@@ -13,13 +13,13 @@ import java.util.Map;
 })
 public class Wind implements Serializable {
 
+    private final static long serialVersionUID = -8201313255909778984L;
     @JsonProperty("Speed")
     private Speed speed;
     @JsonProperty("Direction")
     private Direction direction;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -8201313255909778984L;
 
     /**
      * No args constructor for use in serialization

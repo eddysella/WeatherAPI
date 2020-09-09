@@ -8,12 +8,12 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-public class HTTPClient {
+class HTTPClient {
 
-    public HTTPClient() { }
+    HTTPClient() { }
 
-    public String getFiveDayForecast(String cityID, String passedKey) throws MalformedURLException {
-        HttpUrl httpUrl = buildURL(cityID, passedKey);
+    String getFiveDayForecast(String cityID, String apikeyParam) throws MalformedURLException {
+        HttpUrl httpUrl = buildURL(cityID, apikeyParam);
         Request request = buildRequest(httpUrl);
         String output = executeRequest(request);
         return output;
@@ -21,22 +21,23 @@ public class HTTPClient {
 
     private String executeRequest(Request request) throws MalformedURLException {
         int responseCode = -1;
-        OkHttpClient httpClient = new OkHttpClient();
+        String responseBody = null;
+        Response response;
 
-        try (Response response = httpClient.newCall(request).execute()) {
+        try {
+            response = new OkHttpClient().newCall(request).execute();
             responseCode = response.code();
-            if (responseCode == 200) {
-                return response.body().string();
-            }
-        } catch (IOException e) { }
-        // catches all cases
-        if (responseCode != 200) {
-            throw new MalformedURLException("Error Code: " + responseCode);
+            responseBody = response.body().string();
+        } catch (IOException e) {
         }
-        return null;
+        if (responseCode == 200) {
+            return responseBody;
+        } else {
+            throw new MalformedURLException("API Error Code: " + responseCode);
+        }
     }
 
-    private HttpUrl buildURL(String cityID, String passedKey) {
+    private HttpUrl buildURL(String cityID, String apikeyParam) {
         return new HttpUrl.Builder()
                 .scheme("http")
                 .host("dataservice.accuweather.com")
@@ -45,7 +46,7 @@ public class HTTPClient {
                 .addPathSegment("daily")
                 .addPathSegment("5day")
                 .addPathSegment(cityID)
-                .addQueryParameter("apikey", passedKey)
+                .addQueryParameter("apikey", apikeyParam)
                 .addQueryParameter("language", "en-us")
                 .addQueryParameter("details", "false")
                 .addQueryParameter("metric", "true")

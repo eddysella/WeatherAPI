@@ -13,13 +13,13 @@ import java.util.Map;
 })
 public class RealFeelTemperature implements Serializable {
 
+    private final static long serialVersionUID = 4669933434570462284L;
     @JsonProperty("Minimum")
     private Minimum_ minimum;
     @JsonProperty("Maximum")
     private Maximum_ maximum;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 4669933434570462284L;
 
     /**
      * No args constructor for use in serialization

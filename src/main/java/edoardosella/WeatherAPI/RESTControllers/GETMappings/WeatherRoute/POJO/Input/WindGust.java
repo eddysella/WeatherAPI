@@ -13,13 +13,13 @@ import java.util.Map;
 })
 public class WindGust implements Serializable {
 
+    private final static long serialVersionUID = -1292531963106098496L;
     @JsonProperty("Speed")
     private Speed_ speed;
     @JsonProperty("Direction")
     private Direction_ direction;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -1292531963106098496L;
 
     /**
      * No args constructor for use in serialization

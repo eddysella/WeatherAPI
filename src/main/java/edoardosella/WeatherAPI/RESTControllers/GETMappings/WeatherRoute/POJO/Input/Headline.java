@@ -20,6 +20,7 @@ import java.util.Map;
 })
 public class Headline implements Serializable {
 
+    private final static long serialVersionUID = -4441126259839612215L;
     @JsonProperty("EffectiveDate")
     private String effectiveDate;
     @JsonProperty("EffectiveEpochDate")
@@ -40,7 +41,6 @@ public class Headline implements Serializable {
     private String link;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -4441126259839612215L;
 
     /**
      * No args constructor for use in serialization

@@ -15,6 +15,7 @@ import java.util.Map;
 })
 public class Sun implements Serializable {
 
+    private final static long serialVersionUID = -4126886112465535586L;
     @JsonProperty("Rise")
     private String rise;
     @JsonProperty("EpochRise")
@@ -25,7 +26,6 @@ public class Sun implements Serializable {
     private long epochSet;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -4126886112465535586L;
 
     /**
      * No args constructor for use in serialization

@@ -34,6 +34,7 @@ import java.util.Map;
 })
 public class Night implements Serializable {
 
+    private final static long serialVersionUID = 71558975972539805L;
     @JsonProperty("Icon")
     private long icon;
     @JsonProperty("IconPhrase")
@@ -82,7 +83,6 @@ public class Night implements Serializable {
     private long cloudCover;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 71558975972539805L;
 
     /**
      * No args constructor for use in serialization

@@ -13,13 +13,13 @@ import java.util.Map;
 })
 public class Temperature implements Serializable {
 
+    private final static long serialVersionUID = -188345012849043267L;
     @JsonProperty("Minimum")
     private Minimum minimum;
     @JsonProperty("Maximum")
     private Maximum maximum;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -188345012849043267L;
 
     /**
      * No args constructor for use in serialization

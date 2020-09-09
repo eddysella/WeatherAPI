@@ -11,10 +11,10 @@ The index ( / ) page lists instructions and the available endpoints with query p
 GET: /weatherRoute
 ![alt text](https://github.com/eddysella/WeatherAPI/blob/master/readmeImages/GETweatherRouteSample.jpg?raw=true)
 
-GET: /lastFiveQueries
+GET: /lastFiveWeatherRoutes
 ![alt text](https://github.com/eddysella/WeatherAPI/blob/master/readmeImages/GETLastFiveQueriesSample.png?raw=true)
 
-DELETE: /lastFiveQueries
+DELETE: /lastFiveWeatherRoutes
 ![alt text](https://github.com/eddysella/WeatherAPI/blob/master/readmeImages/DELETELastFiveQueriesSample.png?raw=true)
 
 # Deployed Version

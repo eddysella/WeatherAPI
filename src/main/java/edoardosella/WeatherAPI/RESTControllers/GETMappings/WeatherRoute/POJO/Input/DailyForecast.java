@@ -28,6 +28,7 @@ import java.util.Map;
 })
 public class DailyForecast implements Serializable {
 
+    private final static long serialVersionUID = -4111529110006201835L;
     @JsonProperty("Date")
     private String date;
     @JsonProperty("EpochDate")
@@ -60,7 +61,6 @@ public class DailyForecast implements Serializable {
     private String link;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -4111529110006201835L;
 
     /**
      * No args constructor for use in serialization

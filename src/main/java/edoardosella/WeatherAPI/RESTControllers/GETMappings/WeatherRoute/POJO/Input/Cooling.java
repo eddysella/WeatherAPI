@@ -14,6 +14,7 @@ import java.util.Map;
 })
 public class Cooling implements Serializable {
 
+    private final static long serialVersionUID = -2290343509634303949L;
     @JsonProperty("Value")
     private long value;
     @JsonProperty("Unit")
@@ -22,7 +23,6 @@ public class Cooling implements Serializable {
     private long unitType;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -2290343509634303949L;
 
     /**
      * No args constructor for use in serialization

@@ -14,6 +14,7 @@ import java.util.Map;
 })
 public class Maximum__ implements Serializable {
 
+    private final static long serialVersionUID = -3848455991320637315L;
     @JsonProperty("Value")
     private double value;
     @JsonProperty("Unit")
@@ -22,7 +23,6 @@ public class Maximum__ implements Serializable {
     private long unitType;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -3848455991320637315L;
 
     /**
      * No args constructor for use in serialization

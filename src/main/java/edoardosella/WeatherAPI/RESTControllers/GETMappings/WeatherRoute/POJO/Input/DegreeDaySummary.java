@@ -13,13 +13,13 @@ import java.util.Map;
 })
 public class DegreeDaySummary implements Serializable {
 
+    private final static long serialVersionUID = 8955844351252750771L;
     @JsonProperty("Heating")
     private Heating heating;
     @JsonProperty("Cooling")
     private Cooling cooling;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 8955844351252750771L;
 
     /**
      * No args constructor for use in serialization

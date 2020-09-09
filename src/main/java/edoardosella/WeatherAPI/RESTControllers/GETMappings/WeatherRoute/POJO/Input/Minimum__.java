@@ -14,6 +14,7 @@ import java.util.Map;
 })
 public class Minimum__ implements Serializable {
 
+    private final static long serialVersionUID = 363213960717070634L;
     @JsonProperty("Value")
     private double value;
     @JsonProperty("Unit")
@@ -22,7 +23,6 @@ public class Minimum__ implements Serializable {
     private long unitType;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 363213960717070634L;
 
     /**
      * No args constructor for use in serialization

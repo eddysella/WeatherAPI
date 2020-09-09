@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "previousroutes")
-public class PreviousRoute implements Serializable {
+@Table(name = "weatherroute")
+public class WeatherRoute implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,9 +15,9 @@ public class PreviousRoute implements Serializable {
     @Column(name = "route", columnDefinition = "TEXT")
     private String route;
 
-    public PreviousRoute() { }
+    public WeatherRoute() { }
 
-    public PreviousRoute(String route) {
+    public WeatherRoute(String route) {
         this.route = route;
     }
 
@@ -41,9 +41,9 @@ public class PreviousRoute implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PreviousRoute previousRoute = (PreviousRoute) o;
-        return id == previousRoute.id &&
-                route.equals(previousRoute.route);
+        WeatherRoute weatherRoute = (WeatherRoute) o;
+        return id == weatherRoute.id &&
+                route.equals(weatherRoute.route);
     }
 
     @Override

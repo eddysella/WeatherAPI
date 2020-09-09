@@ -17,6 +17,7 @@ import java.util.Map;
 })
 public class Moon implements Serializable {
 
+    private final static long serialVersionUID = -8559117829373077627L;
     @JsonProperty("Rise")
     private String rise;
     @JsonProperty("EpochRise")
@@ -31,7 +32,6 @@ public class Moon implements Serializable {
     private long age;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -8559117829373077627L;
 
     /**
      * No args constructor for use in serialization

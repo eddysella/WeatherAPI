@@ -14,6 +14,7 @@ import java.util.Map;
 })
 public class TotalLiquid_ implements Serializable {
 
+    private final static long serialVersionUID = 9211163417784566620L;
     @JsonProperty("Value")
     private double value;
     @JsonProperty("Unit")
@@ -22,7 +23,6 @@ public class TotalLiquid_ implements Serializable {
     private long unitType;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 9211163417784566620L;
 
     /**
      * No args constructor for use in serialization

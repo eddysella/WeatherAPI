@@ -14,6 +14,7 @@ import java.util.Map;
 })
 public class Speed__ implements Serializable {
 
+    private final static long serialVersionUID = -7309184779698366799L;
     @JsonProperty("Value")
     private double value;
     @JsonProperty("Unit")
@@ -22,7 +23,6 @@ public class Speed__ implements Serializable {
     private long unitType;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -7309184779698366799L;
 
     /**
      * No args constructor for use in serialization
