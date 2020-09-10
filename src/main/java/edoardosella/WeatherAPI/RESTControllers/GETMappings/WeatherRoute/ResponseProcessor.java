@@ -2,7 +2,7 @@ package edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute;
 
 import edoardosella.WeatherAPI.JPA.Repositories.WeatherRoute.WeatherRouteManager;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Input.DailyForecast;
-import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Input.WeatherStack;
+import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Input.Weather;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Output.City;
 import edoardosella.WeatherAPI.RESTControllers.GETMappings.WeatherRoute.POJO.Output.Route;
 import edoardosella.WeatherAPI.Resources.JSONProcessor;
@@ -34,25 +34,25 @@ class ResponseProcessor {
     }
 
     private Route getRoute(List<String> cities, String apikeyParam, int dateIndex) throws MalformedURLException {
-        List<WeatherStack> weatherStackList = getWeatherForCities(cities, apikeyParam);
-        return buildRoute(cities, weatherStackList, dateIndex);
+        List<Weather> weatherList = getWeatherForCities(cities, apikeyParam);
+        return buildRoute(cities, weatherList, dateIndex);
     }
 
-    private List<WeatherStack> getWeatherForCities(List<String> cities, String apiKey) throws MalformedURLException {
-        List<WeatherStack> weatherStackList = new ArrayList<>();
+    private List<Weather> getWeatherForCities(List<String> cities, String apiKey) throws MalformedURLException {
+        List<Weather> weatherList = new ArrayList<>();
         for (String city : cities) {
             String weatherJSON = weatherClient.getFiveDayForecast(city, apiKey);
-            weatherStackList.add((WeatherStack) jsonProcessor.jsonToObject(weatherJSON, WeatherStack.class));
+            weatherList.add((Weather) jsonProcessor.jsonToObject(weatherJSON, Weather.class));
         }
-        return weatherStackList;
+        return weatherList;
     }
 
-    private Route buildRoute(List<String> cities, List<WeatherStack> weatherStackList, int dateIndex){
+    private Route buildRoute(List<String> cities, List<Weather> weatherList, int dateIndex){
         Route route = new Route();
-        for (int i = 0; i < weatherStackList.size(); i++) {
+        for (int i = 0; i < weatherList.size(); i++) {
             String cityID = cities.get(i);
             try {
-                DailyForecast forecast = weatherStackList.get(i).getDailyForecasts().get(dateIndex);
+                DailyForecast forecast = weatherList.get(i).getDailyForecasts().get(dateIndex);
                 route.addCity(createCityPOJO(cityID, forecast));
             } catch (IndexOutOfBoundsException e) {
                 route.addCity(createEmptyCityPOJO(cityID));

@@ -13,7 +13,7 @@ import java.util.Map;
         "Headline",
         "DailyForecasts"
 })
-public class WeatherStack implements Serializable {
+public class Weather implements Serializable {
 
     private final static long serialVersionUID = 5782077206797781806L;
     @JsonProperty("Headline")
@@ -26,14 +26,14 @@ public class WeatherStack implements Serializable {
     /**
      * No args constructor for use in serialization
      */
-    public WeatherStack() {
+    public Weather() {
     }
 
     /**
      * @param headline
      * @param dailyForecasts
      */
-    public WeatherStack(Headline headline, List<DailyForecast> dailyForecasts) {
+    public Weather(Headline headline, List<DailyForecast> dailyForecasts) {
         super();
         this.headline = headline;
         this.dailyForecasts = dailyForecasts;
@@ -49,7 +49,7 @@ public class WeatherStack implements Serializable {
         this.headline = headline;
     }
 
-    public WeatherStack withHeadline(Headline headline) {
+    public Weather withHeadline(Headline headline) {
         this.headline = headline;
         return this;
     }
@@ -64,7 +64,7 @@ public class WeatherStack implements Serializable {
         this.dailyForecasts = dailyForecasts;
     }
 
-    public WeatherStack withDailyForecasts(List<DailyForecast> dailyForecasts) {
+    public Weather withDailyForecasts(List<DailyForecast> dailyForecasts) {
         this.dailyForecasts = dailyForecasts;
         return this;
     }
@@ -79,7 +79,7 @@ public class WeatherStack implements Serializable {
         this.additionalProperties.put(name, value);
     }
 
-    public WeatherStack withAdditionalProperty(String name, Object value) {
+    public Weather withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }

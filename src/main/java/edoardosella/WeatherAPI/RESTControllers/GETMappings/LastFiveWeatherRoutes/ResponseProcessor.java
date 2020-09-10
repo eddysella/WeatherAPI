@@ -21,7 +21,7 @@ class ResponseProcessor {
 
     private lastFiveWeatherRoutes compileQueryLastFiveWeatherRoutes() {
         lastFiveWeatherRoutes routes = new lastFiveWeatherRoutes();
-        routes.addRoutes(weatherRouteManager.findTop5ByOrderByIdDesc());
+        routes.addRoutes(weatherRouteManager.getAll());
         return routes;
     }
 }

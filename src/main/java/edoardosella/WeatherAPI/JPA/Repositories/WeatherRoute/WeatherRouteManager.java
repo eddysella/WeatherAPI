@@ -27,5 +27,5 @@ public class WeatherRouteManager {
 
     public void deleteAll() { CRUDInterface.deleteAll(); }
 
-    public List<WeatherRoute> findTop5ByOrderByIdDesc() { return CRUDInterface.findTop5ByOrderByIdDesc(); }
+    public List<WeatherRoute> getAll() { return CRUDInterface.findTop5ByOrderByIdDesc(); }
 }
